@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _07Linq;
@@ -82,12 +83,126 @@ namespace _07.Linq
             var filteredProducts = products.Filter<Product>(x => x.PName.StartsWith("i"))
                 .Filter<Product>(x => x.ManufactererId < 3)
                 .Filter<Product>(x => x.Price < 6000);
+
+            //groupJoin
+
+            var productsByManufacter = from manufacterer in manufacturers
+                                       join product in products on manufacterer.Id equals product.ManufactererId into groupedProducts
+                                       select new { manufacterer.Name, groupedProducts };
+
+            foreach(var manufactererGroup in productsByManufacter)
+            {
+                Console.WriteLine($"{manufactererGroup.Name} : ");
+
+                foreach(var product in manufactererGroup.groupedProducts)
+                {
+                    Console.WriteLine(product);
+                }
+            }
+
+            //zip
+
+            int[] a = { 1, 2, 3, 4, 5 , 5, 1, 3};
+            int[] c = { 2, 3, 4, 5, 9, 10, 20 };
+            string[] b = { "ab", "cd", "ef", "gh", "ij" };
+
+            var zipResult = products.Zip(a, b);
+
+            var zipResult1 = a.Zip(b, (first, second) => (first*100) + " : " + second);
+
+            //union, intersect, except, distinct
+
+            var unionResult = a.Union(c);
+            var distinctResult = a.Distinct();
+            var exceptResult = c.Except(a);
+            var intersectResult = a.Intersect(c);
+
+            //OfType
+
+            List<object> list = new List<object> { "1", 1, "da", 2, "doi", 3, 4, 5, "cinci", "5"};
+
+            var resultOfType = list.OfType<int>().ToList();
+            var resultOfType1 = list.OfType<string>().ToList();
+
+            //cast
+
+            List<object> list1 = new List<object>() { 1, 2, 3, 4 };
+
+            var castResult = list1.Cast<int>();
+
+            //toDictionary
+
+            var toDictionaryResult = manufacturers.ToDictionary(x => x.Id, x => x.Name);
+
+            //single
+
+            var product1 = products.Single(x => x.Price == 6500); //arunca exceptie daca nu exista, sau apare de mai multe ori
+
+            //singleOrDefault
+
+            var product2 = products.SingleOrDefault(x => x.Price == 0);
+            //returneaza null daca nu exista, si obiectul daca e unic
+            //altfel arunca exceptie
+
+            //agregate
+
+            var agregateResult = a.Aggregate((x, sum) => sum + x);
+
+            //all
+
+            var allResult = a.All(x => x >= 0);
+
+            //any
+
+            var anyResult = a.Any(x => x < 0);
+
+            int x = 100;
+
+            var result = x.ParityChecker();
+            Console.WriteLine(result);
+
+            var result1 = a.Addder();
+            Console.WriteLine(result1);
         }
 
         
     }
 
-    public static class FilterExtension
+   public enum Parity
+    {
+        Odd,
+        Even
+    };
+
+    public static class ParityExtension
+    {
+        public static Parity ParityChecker(this int x)
+        {
+            if (x % 2 == 0)
+            {
+                return Parity.Even;
+            }
+            return Parity.Odd;
+        }
+    }
+
+    public static class AdderExtension
+    {
+        public static int Addder(this int[] x)
+        {
+            int sum = 0;
+
+            foreach(var item in x)
+            {
+                sum += item;
+            }
+            return sum;
+        }
+    }
+
+
+
+public static class FilterExtension
     {
         public static List<T> Filter<T>(this List<T> items, Func<T, bool> predicate)
         {
