@@ -66,6 +66,8 @@ namespace _07.Linq
 
             var order = products.OrderBy(x => x.PName).ThenBy(x => x.Price).ThenByDescending(x => x.ManufactererId);
 
+            var order1 = products.OrderByDescending(x => x.PName).ThenBy(x => x.Price).ThenByDescending(x => x.ManufactererId);
+
             products.Reverse();
 
             var groupByProducts = products.GroupBy(x => x.ManufactererId);
@@ -105,17 +107,19 @@ namespace _07.Linq
             int[] a = { 1, 2, 3, 4, 5 , 5, 1, 3};
             int[] c = { 2, 3, 4, 5, 9, 10, 20 };
             string[] b = { "ab", "cd", "ef", "gh", "ij" };
+            string[] bb = { "a", "cd", "ef", "gh", "ij" };
 
             var zipResult = products.Zip(a, b);
 
             var zipResult1 = a.Zip(b, (first, second) => (first*100) + " : " + second);
 
-            //union, intersect, except, distinct
+            //union, intersect, except, distinct, concat
 
             var unionResult = a.Union(c);
             var distinctResult = a.Distinct();
             var exceptResult = c.Except(a);
             var intersectResult = a.Intersect(c);
+            var concatResult = a.Concat(c);
 
             //OfType
 
@@ -126,7 +130,7 @@ namespace _07.Linq
 
             //cast
 
-            List<object> list1 = new List<object>() { 1, 2, 3, 4 };
+            List<object> list1 = new List<object>() { 1, 2, 3, 4, 1, 1, 2 };
 
             var castResult = list1.Cast<int>();
 
@@ -163,6 +167,76 @@ namespace _07.Linq
 
             var result1 = a.Addder();
             Console.WriteLine(result1);
+
+            //firstOrDefault, first
+
+            var resultFirstOrDefault = b.FirstOrDefault();
+            var resultFirst = b.First();
+
+            //last, lastOrDefault
+
+            var lastResult = b.Last();
+            var lastOrDefaultResult = b.LastOrDefault();
+
+            //elementAt, elementAtOrDefault
+
+            var elementAtResult = b.ElementAt(3);
+            var elementAtOrDefaultResult = b.ElementAtOrDefault(100);
+
+            //defaultEmpty
+
+            var defaultEmptyResult = b.DefaultIfEmpty("ab");
+
+            //count, longCount
+
+            var countResult = b.Count();
+            var longCountResult = b.LongCount(x => x == "aa");
+
+            //min, max
+
+            var minResult = b.Min();
+            var maxResult = b.Max();
+
+            //Sum, Average
+
+            var sumResult = a.Sum();
+            var averageResult = a.Average();
+
+            //sequence equal
+
+            var sequenceResult = b.SequenceEqual(bb);
+
+            //empty
+
+            var emptyResult = a.DefaultIfEmpty();
+
+            //repeat
+
+            var  repeatStrings = Enumerable.Repeat("example", 10);
+
+            //range
+
+            var numberSequence = Enumerable.Range(1, 100);
+
+            //toArray
+
+            var toArrayResult = list1.ToArray();
+
+            //toList
+
+            var toListResult = toArrayResult.ToList();
+
+            //toLookup
+
+            var toLookupResult = products.ToLookup(x => x.ManufactererId);
+
+            //asEnumerable
+
+            var asEnumerableResult = a.AsEnumerable();
+
+            //AsQueryable
+
+            var queryReslt = products.AsQueryable().Where(x => x.PName.Contains("i"));
         }
 
         
