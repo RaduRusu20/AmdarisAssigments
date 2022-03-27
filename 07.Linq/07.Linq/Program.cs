@@ -237,6 +237,20 @@ namespace _07.Linq
             //AsQueryable
 
             var queryReslt = products.AsQueryable().Where(x => x.PName.Contains("i"));
+
+            //test
+
+            var result4 = (from manufacterer in manufacturers
+                          join product in products on manufacterer.Id equals product.ManufactererId into groupedProducts
+                          select new { manufacterer.Name, groupedProducts })
+                          .Where(x => x.Name == "Apple")
+                          .SelectMany(x => x.groupedProducts)
+                          .Where(x => x.Price < 3000).Count();
+
+            //var result5 = result4.Where(x => x.Name == "Apple");
+            //var result6 = result5.SelectMany(x => x.groupedProducts);
+            //var result7 = result6.Where(x => x.Price < 3000).Count();
+          
         }
 
         
