@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Behavioral
 {
-    public class MemoDelivery : IDeliverBuilder
+    public class FanDelivery : IDeliverBuilder
     {
+        const float deliveryPrice = 20;
+
         public void BuildDeliver()
         {
-            Console.WriteLine("Memo delivery strategy");
+            Console.WriteLine($"Fan delivery strategy, cost {deliveryPrice}");
         }
     }
 }
