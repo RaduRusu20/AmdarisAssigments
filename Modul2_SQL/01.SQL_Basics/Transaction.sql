@@ -4,11 +4,11 @@ BEGIN TRY
 	BEGIN TRANSACTION
 
 	UPDATE dbo.Customers
-	SET Email = 'rusu.radu12@yahoo.com'
+	SET Email = 'rusu.radu@amdaris.com'
 	WHERE FirstName LIKE 'Radu'
 
 	UPDATE dbo.Products
-	SET Price = 52.9
+	SET Price = 'radu'
 	WHERE _Name LIKE 'jaloane'
 
 	UPDATE dbo.ShoppingCartsProducts

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encryption", "Encryption\Encryption.csproj", "{2CE8FC36-77BA-4F61-8566-539878653355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypter", "Crypter\Crypter.csproj", "{C334E939-9015-4EAE-8001-5BD0E298F8AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CE8FC36-77BA-4F61-8566-539878653355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE8FC36-77BA-4F61-8566-539878653355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE8FC36-77BA-4F61-8566-539878653355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE8FC36-77BA-4F61-8566-539878653355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C334E939-9015-4EAE-8001-5BD0E298F8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C334E939-9015-4EAE-8001-5BD0E298F8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C334E939-9015-4EAE-8001-5BD0E298F8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C334E939-9015-4EAE-8001-5BD0E298F8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7AC78C9-7CB8-4A9B-A09B-1B6ED0728826}
+	EndGlobalSection
+EndGlobal
